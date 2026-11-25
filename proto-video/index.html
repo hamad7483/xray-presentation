@@ -1,281 +1,187 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<script src="p1.js"></script><script src="p2.js"></script><script src="p3.js"></script><script>(function(){var M={};(window.__Q||[]).forEach(function(e){if(!M[e[0]])M[e[0]]=[e[1],""];M[e[0]][1]+=e[2]});window.__Q=null;var C={};function u(v){if(typeof v!=="string"||v.indexOf("blob:")===0||v.indexOf("data:")===0)return v;var k=v.split("/").pop().split("?")[0];var e=M[k];if(!e)return v;if(!C[k]){var b=atob(e[1]),a=new Uint8Array(b.length);for(var i=0;i<b.length;i++)a[i]=b.charCodeAt(i);C[k]=URL.createObjectURL(new Blob([a],{type:e[0]}));M[k]=[e[0],""]}return C[k]}function hook(p,n){var d=Object.getOwnPropertyDescriptor(p,n);if(d&&d.set)Object.defineProperty(p,n,{get:d.get,set:function(v){d.set.call(this,u(v))},configurable:true,enumerable:d.enumerable})}hook(HTMLMediaElement.prototype,"src");hook(HTMLSourceElement.prototype,"src");hook(HTMLImageElement.prototype,"src");hook(HTMLVideoElement.prototype,"poster");var sa=Element.prototype.setAttribute;Element.prototype.setAttribute=function(a,v){if(a==="src"||a==="poster"||a==="href")v=u(v);return sa.call(this,a,v)};})();</script>
+<script src="m2_1.js"></script><script src="m2_2.js"></script><script>(function(){var M={};(window.__Q||[]).forEach(function(e){if(!M[e[0]])M[e[0]]=[e[1],""];M[e[0]][1]+=e[2]});window.__Q=null;var C={};function u(v){if(typeof v!=="string"||v.indexOf("blob:")===0||v.indexOf("data:")===0)return v;var k=v.split("/").pop().split("?")[0];var e=M[k];if(!e)return v;if(!C[k]){var b=atob(e[1]),a=new Uint8Array(b.length);for(var i=0;i<b.length;i++)a[i]=b.charCodeAt(i);C[k]=URL.createObjectURL(new Blob([a],{type:e[0]}));M[k]=[e[0],""]}return C[k]}function hook(p,n){var d=Object.getOwnPropertyDescriptor(p,n);if(d&&d.set)Object.defineProperty(p,n,{get:d.get,set:function(v){d.set.call(this,u(v))},configurable:true,enumerable:d.enumerable})}hook(HTMLMediaElement.prototype,"src");hook(HTMLSourceElement.prototype,"src");hook(HTMLImageElement.prototype,"src");hook(HTMLVideoElement.prototype,"poster");var sa=Element.prototype.setAttribute;Element.prototype.setAttribute=function(a,v){if(a==="src"||a==="poster"||a==="href")v=u(v);return sa.call(this,a,v)};})();</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>HI-SCAN 6040 CTiX — smiths detection</title>
 <style>
-  :root{
-    --ink:#f4f7fb;
-    --soft:rgba(230,236,244,.72);
-    --muted:rgba(200,210,222,.55);
-    --line:rgba(230,242,255,.22);
-    --accent:#7fd4ff;
-    --good:#7dffb3;
-    --warn:#ffc56b;
-    --rail:320px;
-    --ease:cubic-bezier(.2,.78,.2,1);
-    --glass:linear-gradient(160deg,rgba(255,255,255,.14),rgba(255,255,255,.05) 42%,rgba(255,255,255,.08));
-    --bg1:#0a1018;
-    --bg2:#151d28;
-  }
-  *{box-sizing:border-box}
-  html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#070b10;color:var(--ink);
-    font-family:-apple-system,BlinkMacSystemFont,"SF Arabic","Segoe UI","Helvetica Neue",Tahoma,Arial,sans-serif;
-    -webkit-font-smoothing:antialiased;color-scheme:dark}
-  button{font:inherit;color:inherit;appearance:none;border:0;background:none;cursor:pointer;padding:0}
-  button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-  button:disabled{opacity:.28;cursor:default}
-  #app{position:fixed;inset:0;display:grid;grid-template-columns:minmax(0,1fr) var(--rail);direction:ltr;background:
-    radial-gradient(ellipse at 38% 46%, #1a2433 0%, var(--bg1) 62%, #06090d 100%)}
-  #scene{
-    position:relative;overflow:hidden;margin:18px 0 18px 18px;border-radius:28px;
-    background:#070b10;border:1px solid rgba(230,242,255,.12);
-    box-shadow:0 30px 80px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.06);
-  }
-  #stage{position:absolute;inset:0;overflow:hidden;border-radius:inherit;background:#070b10}
-  #stage .layer{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s var(--ease);pointer-events:none}
-  #stage .layer.on{opacity:1}
-  #stage img.ken{animation:ken 14s var(--ease) alternate infinite}
-  @keyframes ken{from{transform:scale(1.0) translate3d(0,0,0)}to{transform:scale(1.07) translate3d(-1.2%,1%,0)}}
-  #grade{position:absolute;inset:0;pointer-events:none;z-index:3;border-radius:inherit;
-    background:linear-gradient(180deg,rgba(6,10,16,.35) 0%,transparent 22%,transparent 62%,rgba(6,10,16,.4) 100%)}
-  #brand{position:absolute;top:22px;left:26px;z-index:6;direction:ltr;text-align:left;pointer-events:none;
-    text-shadow:0 2px 18px rgba(0,0,0,.55)}
-  #brand .name{font:600 22px/1.05 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;letter-spacing:-.03em}
-  #brand .name span{font-weight:350}
-  #brand .product{margin-top:6px;font:500 12px/1.1 -apple-system,BlinkMacSystemFont,Arial,sans-serif;letter-spacing:.12em;color:rgba(255,255,255,.72);text-transform:uppercase}
-  #scene.light{background:#f7f7f7}
-  #scene.light #grade{background:linear-gradient(180deg,rgba(255,255,255,.0),rgba(255,255,255,0) 80%)}
-  #scene.light #brand .name,#scene.light #brand .product{color:#1a1f26;text-shadow:none}
+:root{--ink:#eef2f7;--mut:#8f9aa8;--line:rgba(255,255,255,.13);--acc:#5aa7ff;--cy:#62dcff;--good:#7dffb3;--warn:#ffb08f;
+  --rw:clamp(210px,20vw,280px);--gap:clamp(14px,2.6vw,48px);--pad:clamp(10px,2.2vw,40px);
+  --sw:min(62vw, calc((100dvh - 2*var(--pad)) * 16 / 9), calc(100vw - var(--rw) - var(--gap) - 2*var(--pad)))}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden;background:#07090d;color:var(--ink);
+  font-family:"SF Arabic","Geeza Pro","Noto Kufi Arabic","Noto Sans Arabic",-apple-system,system-ui,sans-serif;-webkit-font-smoothing:antialiased;color-scheme:dark;-webkit-tap-highlight-color:transparent}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;-webkit-appearance:none;appearance:none}
+button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+#app{position:fixed;inset:0;direction:ltr;display:grid;grid-template-columns:var(--sw) var(--rw);grid-template-rows:auto;
+  grid-template-areas:"scene rail";column-gap:var(--gap);justify-content:center;align-content:center;padding:var(--pad);
+  background:radial-gradient(90% 80% at 35% 45%,#18202c 0%,#0b0f15 55%,#05070a 100%)}
+#scene{grid-area:scene;align-self:center;position:relative;width:var(--sw);aspect-ratio:16/9;border-radius:clamp(12px,1.4vw,22px);overflow:hidden;
+  background:#07090d;border:1px solid rgba(255,255,255,.09);box-shadow:0 24px 70px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.05);isolation:isolate}
+#scene .brand{position:absolute;top:clamp(8px,1.2vw,18px);left:clamp(8px,1.2vw,18px);z-index:30;direction:ltr;pointer-events:none;
+  padding:6px 11px 7px;border-radius:12px;background:rgba(8,11,16,.42);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.08)}
+#scene .brand .n{font:500 clamp(11px,1vw,16px)/1.05 "Inter","Helvetica Neue",Arial,sans-serif;letter-spacing:-.01em;color:#f2f5f9}
+#scene .brand .n b{font-weight:700}
+#scene .brand .p{margin-top:3px;font:600 clamp(8px,.62vw,10.5px)/1 "Inter","Helvetica Neue",Arial,sans-serif;letter-spacing:.14em;color:rgba(255,255,255,.66)}
+#note{grid-area:note;display:none}
+/* right rail */
+#rail{grid-area:rail;direction:rtl;align-self:center;height:max(calc(var(--sw) * 9 / 16), min(440px, calc(100dvh - 2 * var(--pad))));min-height:0;display:flex;flex-direction:column;padding:clamp(12px,1.1vw,18px) clamp(10px,1vw,16px) clamp(10px,.9vw,14px);
+  border-radius:clamp(14px,1.4vw,22px);background:linear-gradient(165deg,rgba(255,255,255,.09),rgba(255,255,255,.025) 45%,rgba(255,255,255,.045));
+  border:1px solid var(--line);box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 20px 60px rgba(0,0,0,.4);backdrop-filter:blur(22px) saturate(150%);-webkit-backdrop-filter:blur(22px) saturate(150%)}
+#rail .hd{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:clamp(8px,1vh,14px)}
+#rail .hd .k{font-size:12px;color:var(--mut)}
+#rail .hd .c{direction:ltr;font:600 11px/1 "Inter",Arial,sans-serif;color:#cfd6e0;padding:4px 9px;border-radius:99px;background:rgba(255,255,255,.07);border:1px solid var(--line)}
+#steps{list-style:none;position:relative;flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column;gap:2px;scrollbar-width:none}
+#steps::-webkit-scrollbar{display:none}
+#steps .track{position:absolute;right:calc(clamp(28px,1.7vw,34px)/2 - 1px);top:16px;bottom:16px;width:1.5px;background:rgba(255,255,255,.1);border-radius:2px;pointer-events:none}
+#steps .track i{position:absolute;inset:0;background:linear-gradient(180deg,var(--cy),var(--acc));transform-origin:top;transform:scaleY(0);transition:transform .7s cubic-bezier(.4,0,.2,1)}
+.step{display:flex;gap:10px;align-items:flex-start;padding:4px 0;position:relative}
+.dot{flex:none;width:clamp(28px,1.7vw,34px);height:clamp(28px,1.7vw,34px);border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);background:#121720;color:#9aa4b2;
+  font:600 12px/1 "Inter",Arial,sans-serif;position:relative;z-index:1;transition:background .35s,border-color .35s,color .35s,box-shadow .35s}
+.step.done .dot{color:#dfe7f2;border-color:rgba(98,220,255,.35)}
+.step.on .dot{background:radial-gradient(circle at 50% 35%,#6aa0ff,#2a5bd8);color:#fff;border-color:rgba(255,255,255,.45);box-shadow:0 0 0 4px rgba(90,167,255,.14)}
+.txt{min-width:0;flex:1;padding-top:5px}
+.ttl{font-size:clamp(13px,.8vw,16px);font-weight:700;color:#b9c2ce;cursor:pointer;line-height:1.25;transition:color .3s}
+.step.on .ttl{color:#fff}
+.desc{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .45s ease,opacity .35s ease,margin .35s}
+.desc>div{overflow:hidden;font-size:clamp(12px,.72vw,14px);line-height:1.65;color:#d3dae4}
+.step.on .desc{grid-template-rows:1fr;opacity:1;margin-top:6px}
+.dec{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.dec button{flex:1 1 auto;white-space:nowrap;padding:7px 8px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.06);font-size:12px;font-weight:700;transition:background .2s,border-color .2s}
+.dec button.ok.sel,.dec button.ok:hover{border-color:rgba(125,255,179,.6);background:rgba(60,190,120,.22);color:var(--good)}
+.dec button.chk.sel,.dec button.chk:hover{border-color:rgba(255,150,120,.6);background:rgba(220,90,60,.22);color:var(--warn)}
+.verdict{margin-top:6px;font-size:11.5px;min-height:1em}
+.nav{display:flex;align-items:center;justify-content:center;gap:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.08);margin-top:6px}
+.nav button{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);background:rgba(255,255,255,.06);transition:background .2s}
+.nav button:hover:not(:disabled){background:rgba(255,255,255,.14)}
+.nav button:disabled{opacity:.3;cursor:default}
+.nav #play{width:40px;height:40px;background:linear-gradient(180deg,rgba(255,255,255,.2),rgba(255,255,255,.07))}
+.nav svg{width:16px;height:16px;fill:#fff}
+#play .i-play{display:none}#play.paused .i-play{display:block}#play.paused .i-pause{display:none}
+.hint{margin-top:7px;font-size:10.5px;color:#6f7a87;text-align:center}
+/* phones in portrait: scene left, slim dot rail right, explanation under the scene */
+@media (max-width:640px) and (orientation:portrait){
+  :root{--rw:50px;--gap:8px;--pad:10px;--sw:calc(100vw - var(--rw) - var(--gap) - 2*var(--pad))}
+  #app{align-content:center;row-gap:10px;grid-template-rows:auto auto;grid-template-areas:"scene rail" "note rail"}
+  #note{display:block;direction:rtl;height:158px;overflow-y:auto;padding:12px 14px;border-radius:14px;background:linear-gradient(165deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border:1px solid var(--line)}
+  #note .t{font-size:15px;font-weight:700}
+  #note .d{font-size:13px;line-height:1.7;color:#d3dae4;margin-top:4px}
+  #note .dec{margin-top:10px}#note .dec button{padding:10px 6px;font-size:13px}
+  #scene .brand{padding:4px 7px 5px;border-radius:8px}#scene .brand .n{font-size:10px}#scene .brand .p{font-size:6.5px;margin-top:2px}
+  #rail{padding:8px 0;align-items:center;border-radius:25px;height:auto;align-self:stretch}
+  #rail .hd,.hint,.txt{display:none}
+  #steps{align-items:center;gap:8px;flex:0 0 auto;overflow:visible}
+  #steps .track{right:auto;left:50%;margin-left:-.75px;top:10px;bottom:10px}
+  .step{padding:0}
+  .nav{flex-direction:column;gap:8px;border-top:0;padding-top:12px;margin-top:auto}
+  .nav button{width:32px;height:32px}.nav #play{width:34px;height:34px}
+}
+@media (max-height:460px){ .hint,#rail .hd{display:none} .step{padding:2px 0} .dot{width:26px;height:26px} .desc>div{font-size:11.5px;line-height:1.5} }
 
-  #rail{position:relative;display:flex;flex-direction:column;padding:22px 22px 18px;z-index:8;min-width:0;direction:rtl}
-  .glass-col{
-    flex:1;display:flex;flex-direction:column;padding:22px 18px 16px;border-radius:28px;
-    background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.035));
-    border:1px solid var(--line);
-    box-shadow:0 18px 50px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.16);
-    backdrop-filter:blur(28px) saturate(1.35);-webkit-backdrop-filter:blur(28px) saturate(1.35);
-  }
-  .steps{position:relative;display:flex;flex-direction:column;gap:0;flex:1;padding:4px 4px 8px 8px}
-  .steps:before{content:"";position:absolute;top:28px;bottom:28px;right:32px;width:1px;background:linear-gradient(180deg,transparent,rgba(255,255,255,.28) 12%,rgba(255,255,255,.28) 88%,transparent)}
-  .step{position:relative;display:grid;grid-template-columns:1fr 44px;gap:12px;align-items:start;min-height:72px;padding:4px 0 10px}
-  .dot{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;position:relative;z-index:1;
-    border:1px solid rgba(255,255,255,.28);background:rgba(8,12,18,.55);color:var(--soft);
-    font:600 15px/1 -apple-system,BlinkMacSystemFont,Arial,sans-serif;letter-spacing:0;transition:.35s var(--ease)}
-  .step.active .dot{border-color:rgba(127,212,255,.85);color:#fff;background:rgba(90,170,220,.22);
-    box-shadow:0 0 0 6px rgba(127,212,255,.10), 0 0 24px rgba(80,180,255,.35)}
-  .step.done .dot{border-color:rgba(127,255,179,.45);color:#d9ffe9}
-  .step .meta{text-align:right;padding-top:8px}
-  .step .label{font:600 15px/1.2 inherit;color:rgba(255,255,255,.55);transition:color .3s}
-  .step.active .label{color:#fff}
-  .explain{margin-top:8px;font:400 13px/1.55 inherit;color:var(--soft);max-height:0;overflow:hidden;opacity:0;transition:.4s var(--ease)}
-  .step.active .explain{max-height:140px;opacity:1}
-
-  .decision{display:none;gap:8px;margin:8px 0 4px}
-  .step.active .decision.show{display:flex}
-  .decision button{flex:1;padding:10px 8px;border-radius:16px;border:1px solid var(--line);
-    background:rgba(255,255,255,.06);font:600 13px/1.2 inherit;transition:.2s}
-  .decision button:hover{background:rgba(255,255,255,.12)}
-  .decision button.pick-good{border-color:rgba(125,255,179,.7);background:rgba(80,200,140,.2);color:var(--good)}
-  .decision button.pick-warn{border-color:rgba(255,197,107,.7);background:rgba(200,150,60,.2);color:var(--warn)}
-
-  .nav{display:flex;gap:8px;align-items:center;justify-content:space-between;padding-top:10px;border-top:1px solid rgba(255,255,255,.1)}
-  .nav .pair{display:flex;gap:8px}
-  .nav button{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
-    border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);transition:.2s}
-  .nav button:hover:not(:disabled){background:rgba(255,255,255,.14)}
-  .nav .next{width:auto;padding:0 18px;border-radius:22px;font:600 14px/1 inherit;letter-spacing:.02em}
-  .hint{margin-top:8px;font:400 11px/1.4 inherit;color:var(--muted);text-align:center;white-space:nowrap}
-  @media (max-width:820px){
-    :root{--rail:100%}
-    #app{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto}
-    #scene{margin:10px 10px 0}
-    #rail{padding:10px}
-    .glass-col{padding:12px 12px 10px}
-    .steps{flex-direction:row;overflow-x:auto;gap:8px;padding:0}
-    .steps:before{display:none}
-    .step{grid-template-columns:44px;min-height:0;padding:4px}
-    .step .meta{display:none}
-    .step.active .meta{display:block;position:absolute;left:12px;right:12px;top:56px;padding:0;z-index:2}
-    .glass-col{position:relative;padding-bottom:120px}
-    .explain{background:rgba(8,12,18,.55);padding:8px 10px;border-radius:12px}
-  }
+#scene .L{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .55s ease;pointer-events:none;background:#07090d}
+#scene .L.on{opacity:1}
+#scene .ken{animation:ken 16s ease-in-out infinite alternate}
+@keyframes ken{from{transform:scale(1)}to{transform:scale(1.05) translate(-1%,.6%)}}
+#scene .grade{position:absolute;inset:0;z-index:20;pointer-events:none;background:radial-gradient(130% 100% at 50% 50%,transparent 62%,rgba(0,0,0,.28) 100%)}
+#scene.white .grade{opacity:0}
+#scene .grade{transition:opacity .8s}
 </style>
 </head>
 <body>
 <div id="app">
   <section id="scene">
-    <div id="stage">
-      <img id="still" class="layer" alt="">
-      <video id="vid" class="layer" playsinline muted></video>
-    </div>
-    <div id="grade"></div>
-    <div id="brand">
-      <div class="name">smiths <span>detection</span></div>
-      <div class="product">HI-SCAN 6040 CTiX</div>
-    </div>
+    <img id="L_machine" class="L ken" alt="">
+    <video id="L_entry" class="L" muted playsinline preload="auto"></video>
+    <video id="L_scan" class="L" muted playsinline preload="auto"></video>
+    <video id="L_image" class="L" muted playsinline preload="auto"></video>
+    <img id="L_xray" class="L" alt="">
+    <div class="grade"></div>
+    <div class="brand"><div class="n"><b>smiths</b> detection</div><div class="p">HI-SCAN 6040 CTiX</div></div>
   </section>
+  <div id="note"></div>
   <aside id="rail">
-    <div class="glass-col">
-      <div class="steps" id="steps"></div>
-      <div class="nav">
-        <div class="pair">
-          <button type="button" id="btnPrev" aria-label="السابق">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
-          </button>
-          <button type="button" id="btnPlay" aria-label="تشغيل أو إيقاف">
-            <svg id="icPlay" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            <svg id="icPause" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" hidden><path d="M7 5h3v14H7zm7 0h3v14h-3z"/></svg>
-          </button>
-        </div>
-        <button type="button" class="next" id="btnNext">التالي</button>
-      </div>
-      <div class="hint">← → للتنقّل &nbsp;·&nbsp; مسافة لإيقاف الفيديو</div>
-    </div>
-  </aside>
+  <div class="hd"><span class="k">مراحل العرض</span><span class="c" id="counter">1 / 5</span></div>
+  <ol id="steps"><div class="track"><i id="bar"></i></div></ol>
+  <div class="nav">
+    <button id="prev" aria-label="السابق"><svg viewBox="0 0 24 24"><path d="M8.6 16.6 10 18l6-6-6-6-1.4 1.4 4.6 4.6z"/></svg></button>
+    <button id="play" aria-label="تشغيل / إيقاف"><svg class="i-pause" viewBox="0 0 24 24"><path d="M7 5h4v14H7zm6 0h4v14h-4z"/></svg><svg class="i-play" viewBox="0 0 24 24"><path d="M17 5v14L6 12z"/></svg></button>
+    <button id="next" aria-label="التالي"><svg viewBox="0 0 24 24"><path d="M15.4 7.4 14 6l-6 6 6 6 1.4-1.4L10.8 12z"/></svg></button>
+    <button id="fs" aria-label="ملء الشاشة"><svg viewBox="0 0 24 24"><path d="M4 4h6v2H6v4H4zm10 0h6v6h-2V6h-4zM4 14h2v4h4v2H4zm14 0h2v6h-6v-2h4z"/></svg></button>
+  </div>
+  <div class="hint">← التالي · → السابق · مسافة للإيقاف</div>
+</aside>
+
 </div>
 <script>
+function makeRail(o){
+  const S=o.steps, list=document.getElementById('steps'), note=document.getElementById('note');
+  const decHTML='<div class="dec"><button class="ok" data-k="clear">سليمة</button><button class="chk" data-k="check">تفتيش إضافي</button></div><div class="verdict"></div>';
+  S.forEach((s,i)=>{const li=document.createElement('li');li.className='step';
+    li.innerHTML=`<button class="dot" aria-label="${s.t}">${i+1}</button><div class="txt"><div class="ttl">${s.t}</div><div class="desc"><div>${s.d}${s.decide?decHTML:''}</div></div></div>`;
+    li.querySelector('.dot').onclick=()=>go(i); li.querySelector('.ttl').onclick=()=>go(i); list.appendChild(li);});
+  let cur=-1, paused=false;
+  function wireDec(root){root.querySelectorAll('.dec button').forEach(b=>b.onclick=(e)=>{e.stopPropagation();
+    document.querySelectorAll('.dec button').forEach(x=>x.classList.toggle('sel',x.dataset.k===b.dataset.k));
+    const v=b.dataset.k==='clear'?'سليمة · تكمل الحقيبة طريقها':'تفتيش إضافي · تحويل للفحص اليدوي';
+    document.querySelectorAll('.verdict').forEach(x=>{x.textContent=v;x.style.color=b.dataset.k==='clear'?'var(--good)':'var(--warn)'});
+    o.onDecide&&o.onDecide(b.dataset.k);});}
+  wireDec(list);
+  function go(i){i=Math.max(0,Math.min(S.length-1,i)); if(i===cur) return; cur=i;
+    document.querySelectorAll('.step').forEach((el,k)=>{el.classList.toggle('on',k===i);el.classList.toggle('done',k<i)});
+    document.getElementById('counter').textContent=`${i+1} / ${S.length}`;
+    document.getElementById('bar').style.transform=`scaleY(${i/(S.length-1)})`;
+    document.getElementById('prev').disabled=i===0; document.getElementById('next').disabled=i===S.length-1;
+    if(note){note.innerHTML=`<div class="t">${i+1}. ${S[i].t}</div><div class="d">${S[i].d}</div>${S[i].decide?decHTML:''}`;wireDec(note);}
+    document.querySelectorAll('.verdict').forEach(x=>x.textContent='');document.querySelectorAll('.dec button').forEach(x=>x.classList.remove('sel'));
+    setPaused(false,true); o.onGo(i);}
+  function setPaused(p,silent){paused=p;document.getElementById('play').classList.toggle('paused',p);if(!silent&&o.onPause)o.onPause(p);}
+  document.getElementById('next').onclick=()=>go(cur+1);
+  document.getElementById('prev').onclick=()=>go(cur-1);
+  document.getElementById('play').onclick=()=>setPaused(!paused);
+  const fs=()=>{document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen().catch(()=>{})};
+  document.getElementById('fs').onclick=fs;
+  addEventListener('keydown',e=>{ if(e.repeat)return;
+    if(['ArrowLeft','ArrowDown','PageDown','Enter'].includes(e.key)){e.preventDefault();go(cur+1)}
+    else if(['ArrowRight','ArrowUp','PageUp','Backspace'].includes(e.key)){e.preventDefault();go(cur-1)}
+    else if(e.key===' '){e.preventDefault();setPaused(!paused)}
+    else if(e.key==='f'||e.key==='F'){fs()}});
+  return {go,setPaused,get cur(){return cur}};
+}
+
 (function(){
-  const MEDIA = Object.assign({
-    machine: "media/machine.jpg",
-    entry: "media/entry.mp4",
-    scan: "media/scan.mp4",
-    image: "media/image.mp4",
-    xray: "media/xray.jpg",
-    posters: {
-      entry: "media/entry.jpg",
-      scan: "media/scan.jpg"
-    }
-  }, window.__MEDIA || {});
-
-  const STAGES = [
-    {id:"machine", title:"الجهاز", note:"تعرّفوا على أجزاء الجهاز الرئيسية، وهذا هو شكله من الأمام.", kind:"still", src:"machine", ken:true, light:false},
-    {id:"entry", title:"الدخول", note:"الحقيبة تُوضع على السير وتدخل النفق، والكاميرا من الأعلى ومن الخلف.", kind:"video", src:"entry", light:false},
-    {id:"scan", title:"المسح", note:"حلقة التصوير تدور حول الحقيبة، وشعاع المسح يكشف محتوياتها.", kind:"video", src:"scan", light:false},
-    {id:"image", title:"الصورة", note:"تظهر صورة الأشعة الحقيقية على شاشة المفتش، بخلفية بيضاء وألوان أوضح.", kind:"video", src:"image", after:"xray", lightAfter:true, light:false},
-    {id:"decide", title:"القرار", note:"قرّروا الآن: الحقيبة سليمة، أو تحتاج تفتيشاً إضافياً.", kind:"still", src:"xray", light:true, decide:true}
+  const STEPS=[
+    {t:'الجهاز',d:'هذا جهاز HI-SCAN 6040 CTiX من الأمام: الهيكل، النفق، والسير.'},
+    {t:'دخول الحقيبة',d:'توضع الحقيبة على السير وتدخل النفق بسرعة ثابتة.'},
+    {t:'المسح بالأشعة',d:'أنبوب الأشعة يدور حول الحقيبة ويلتقط مقاطع من كل الزوايا.'},
+    {t:'صورة الأشعة',d:'تظهر الصورة على شاشة المفتش بخلفية بيضاء: البرتقالي عضوي، الأخضر مختلط، الأزرق معادن.'},
+    {t:'القرار',d:'يقرر المفتش: الحقيبة سليمة، أو تحتاج تفتيشاً إضافياً.',decide:true}
   ];
-
-  const stepsEl = document.getElementById("steps");
-  const still = document.getElementById("still");
-  const vid = document.getElementById("vid");
-  const scene = document.getElementById("scene");
-  const btnPrev = document.getElementById("btnPrev");
-  const btnNext = document.getElementById("btnNext");
-  const btnPlay = document.getElementById("btnPlay");
-  const icPlay = document.getElementById("icPlay");
-  const icPause = document.getElementById("icPause");
-
-  let i = 0, decision = null;
-
-  STAGES.forEach((s, n) => {
-    const el = document.createElement("button");
-    el.type = "button";
-    el.className = "step";
-    el.dataset.i = n;
-    el.innerHTML = `<div class="meta"><div class="label">${s.title}</div><div class="explain">${s.note}${s.decide?`<div class="decision" id="decision"><button type="button" data-pick="good">سليمة</button><button type="button" data-pick="warn">تفتيش إضافي</button></div>`:""}</div></div><div class="dot">${n+1}</div>`;
-    el.addEventListener("click", () => go(n));
-    stepsEl.appendChild(el);
-  });
-
-  stepsEl.addEventListener("click", (e) => {
-    const b = e.target.closest("[data-pick]");
-    if(!b) return;
-    e.stopPropagation();
-    decision = b.dataset.pick;
-    stepsEl.querySelectorAll("[data-pick]").forEach(x => x.classList.remove("pick-good","pick-warn"));
-    b.classList.add(decision === "good" ? "pick-good" : "pick-warn");
-  });
-
-  function mediaUrl(key){
-    const v = MEDIA[key];
-    if(!v) return "";
-    if(typeof v === "string") return v;
-    return v;
+  const LAYER=['machine','entry','scan','image','xray'].map(k=>document.getElementById('L_'+k));
+  const scene=document.getElementById('scene');
+  // set sources from JS so the media shim maps them to preloaded blobs
+  const set=(el,k,v)=>{el[k]=v};
+  set(LAYER[0],'src','media/machine.jpg'); set(LAYER[4],'src','media/xray.jpg');
+  [['entry',1],['scan',2],['image',3]].forEach(([k,i])=>{const v=LAYER[i]; set(v,'poster','media/'+k+'_p.jpg'); set(v,'src','media/'+k+'.mp4'); v.load();});
+  let top=null, z=1, tok=0, hideT=0, active=null;
+  function show(el){ if(top===el) return; z+=1; el.style.zIndex=z; void el.offsetWidth; el.classList.add('on'); const prev=top; top=el;
+    clearTimeout(hideT); hideT=setTimeout(()=>{LAYER.forEach(l=>{ if(l!==top){ l.classList.remove('on'); if(l.tagName==='VIDEO'){ try{l.pause()}catch(e){} } } })},700); }
+  function ready(v){ return new Promise(res=>{ if(v.readyState>=2 && Math.abs(v.currentTime)<0.01) return res();
+      const done=()=>{v.removeEventListener('seeked',done);v.removeEventListener('loadeddata',done);res()};
+      v.addEventListener('seeked',done); v.addEventListener('loadeddata',done);
+      try{ v.currentTime=0 }catch(e){}; setTimeout(res,900); }); }
+  function onGo(i){ const my=++tok; const el=LAYER[i]; active=el;
+    scene.classList.toggle('white', i>=4);
+    if(el.tagName==='VIDEO'){ try{el.pause()}catch(e){}
+      ready(el).then(()=>{ if(my!==tok) return; const p=el.play(); show(el); if(p&&p.catch)p.catch(()=>rail.setPaused(true,true)); });
+      el.ontimeupdate=()=>{ if(i===3 && el.currentTime>0.9 && active===el) scene.classList.add('white'); };
+      el.onended=()=>{ rail.setPaused(true,true); };
+    } else { show(el); }
   }
-
-  function showPlay(playing){
-    icPlay.hidden = playing;
-    icPause.hidden = !playing;
-  }
-
-  function stopVid(){
-    try{ vid.pause(); }catch(e){}
-    showPlay(false);
-  }
-
-  function go(n){
-    i = Math.max(0, Math.min(STAGES.length-1, n));
-    const s = STAGES[i];
-    [...stepsEl.children].forEach((el, k) => {
-      el.classList.toggle("active", k===i);
-      el.classList.toggle("done", k<i);
-    });
-    const dec = document.getElementById("decision");
-    if(dec) dec.classList.toggle("show", !!s.decide);
-    btnPrev.disabled = i===0;
-    btnNext.disabled = i===STAGES.length-1;
-    btnNext.textContent = i===STAGES.length-1 ? "النهاية" : "التالي";
-
-    stopVid();
-    still.classList.remove("ken","on");
-    vid.classList.remove("on");
-    scene.classList.toggle("light", !!s.light);
-
-    if(s.kind === "video"){
-      const src = mediaUrl(s.src);
-      const poster = (MEDIA.posters && MEDIA.posters[s.src]) || "";
-      if(poster){ still.src = poster; still.classList.add("on"); }
-      if(vid.dataset.src !== src){
-        vid.dataset.src = src;
-        vid.src = src;
-      }
-      vid.currentTime = 0;
-      vid.classList.add("on");
-      const play = vid.play();
-      if(play && play.then) play.then(()=>{ still.classList.remove("on"); showPlay(true); }).catch(()=> showPlay(false));
-      else showPlay(!vid.paused);
-      vid.onended = () => {
-        showPlay(false);
-        if(s.after){
-          still.src = mediaUrl(s.after);
-          still.classList.add("on");
-          vid.classList.remove("on");
-          if(s.lightAfter) scene.classList.add("light");
-        }
-      };
-    } else {
-      vid.removeAttribute("src"); vid.dataset.src = "";
-      vid.load();
-      still.src = mediaUrl(s.src);
-      still.classList.add("on");
-      if(s.ken) still.classList.add("ken");
-      showPlay(false);
-    }
-  }
-
-  function toggle(){
-    const s = STAGES[i];
-    if(s.kind !== "video") return;
-    if(vid.paused){ vid.play().then(()=>showPlay(true)).catch(()=>{}); }
-    else { vid.pause(); showPlay(false); }
-  }
-
-  btnPrev.onclick = () => go(i-1);
-  btnNext.onclick = () => { if(i<STAGES.length-1) go(i+1); };
-  btnPlay.onclick = toggle;
-
-  window.addEventListener("keydown", (e) => {
-    if(e.repeat) return;
-    if(e.code==="Space"){ e.preventDefault(); toggle(); }
-    else if(e.code==="ArrowLeft" || e.code==="ArrowDown"){ e.preventDefault(); go(i+1); }
-    else if(e.code==="ArrowRight" || e.code==="ArrowUp"){ e.preventDefault(); go(i-1); }
-  });
-
-  // RTL: left arrow advances (next is visually to the left in a typical Arabic deck).
-  go(0);
+  function onPause(p){ const v=active; if(!v||v.tagName!=='VIDEO') return; if(p) v.pause(); else { if(v.ended) v.currentTime=0; v.play().catch(()=>{}); } }
+  const rail=makeRail({steps:STEPS,onGo,onPause});
+  const start=()=>rail.go(0);
+  if(LAYER[0].complete) start(); else { LAYER[0].onload=start; setTimeout(start,1500); }
 })();
 </script>
 </body>
